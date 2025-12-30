@@ -1,0 +1,18 @@
+pre-push:
+  jobs:
+    - name: packages audit
+      run: pnpm audit
+
+    - name: unit test
+      run: pnpm test:unit
+
+pre-commit:
+  jobs:
+    - name: lint
+      run: pnpm format {staged_files}
+      glob: "*.{ts}"
+
+test:
+  jobs:
+    - name: test
+      run: pnpm test
